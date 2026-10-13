@@ -17,7 +17,7 @@ namespace {
 using ge::Fixed;
 
 struct Ball {
-    Fixed y = Fixed::fromInt(10);   // start 10 units up
+    Fixed y = Fixed::fromInt(10);  // start 10 units up
     Fixed vy = Fixed::fromInt(0);
 };
 
@@ -26,7 +26,7 @@ void step(Ball& b, Fixed dt) {
     const Fixed gravity = Fixed::fromFloat(-9.81f);
     b.vy += gravity * dt;
     b.y += b.vy * dt;
-    if (b.y < Fixed::fromInt(0)) {       // hit the floor
+    if (b.y < Fixed::fromInt(0)) {  // hit the floor
         b.y = Fixed::fromInt(0);
         b.vy = -b.vy * Fixed::fromFloat(0.7f);  // lose energy on bounce
     }

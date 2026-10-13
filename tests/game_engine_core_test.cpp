@@ -12,17 +12,18 @@ namespace {
 int g_failures = 0;
 int g_checks = 0;
 
-#define CHECK(cond)                                                    \
-    do {                                                               \
-        ++g_checks;                                                    \
-        if (!(cond)) {                                                 \
-            std::printf("FAIL %s:%d: CHECK(%s)\n", __FILE__, __LINE__, \
-                        #cond);                                        \
-            ++g_failures;                                              \
-        }                                                              \
+#define CHECK(cond)                                                            \
+    do {                                                                       \
+        ++g_checks;                                                            \
+        if (!(cond)) {                                                         \
+            std::printf("FAIL %s:%d: CHECK(%s)\n", __FILE__, __LINE__, #cond); \
+            ++g_failures;                                                      \
+        }                                                                      \
     } while (0)
 
-float absf(float x) { return x < 0.0f ? -x : x; }
+float absf(float x) {
+    return x < 0.0f ? -x : x;
+}
 
 using ge::Fixed;
 
@@ -56,7 +57,7 @@ void test_fixed_is_deterministic() {
 }
 
 void test_timestep_step_count() {
-    ge::FixedTimestep clock(0.10f);  // 100 ms steps
+    ge::FixedTimestep clock(0.10f);    // 100 ms steps
     CHECK(clock.advance(0.05f) == 0);  // not enough yet
     CHECK(clock.advance(0.06f) == 1);  // 0.11s accumulated -> 1 step
     // 0.01s remained; +0.20s = 0.21s -> 2 steps.

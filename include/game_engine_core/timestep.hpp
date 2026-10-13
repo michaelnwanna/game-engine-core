@@ -3,8 +3,8 @@
 // timestep.hpp — Fixed-timestep accumulator (the "fix your timestep" pattern).
 //
 // Rendering runs as fast as the machine allows, but the simulation must advance
-// in fixed, equal-size steps so physics is stable and reproducible regardless of
-// frame rate. This accumulates real elapsed time and reports how many fixed
+// in fixed, equal-size steps so physics is stable and reproducible regardless
+// of frame rate. This accumulates real elapsed time and reports how many fixed
 // steps to run, exposing an interpolation factor for smooth rendering between
 // them — and capping work per frame to avoid the "spiral of death".
 
@@ -15,8 +15,7 @@ namespace ge {
 
 class FixedTimestep {
 public:
-    explicit FixedTimestep(float stepSeconds,
-                           int maxStepsPerFrame = 8) noexcept
+    explicit FixedTimestep(float stepSeconds, int maxStepsPerFrame = 8) noexcept
         : step_(stepSeconds), maxSteps_(maxStepsPerFrame) {}
 
     /// Feed elapsed real time; returns how many fixed steps to run this frame.

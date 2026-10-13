@@ -60,20 +60,12 @@ public:
         return fromRaw(static_cast<int32_t>(n / o.raw_));
     }
 
-    constexpr bool operator==(Fixed o) const noexcept {
-        return raw_ == o.raw_;
-    }
-    constexpr bool operator!=(Fixed o) const noexcept {
-        return raw_ != o.raw_;
-    }
+    constexpr bool operator==(Fixed o) const noexcept { return raw_ == o.raw_; }
+    constexpr bool operator!=(Fixed o) const noexcept { return raw_ != o.raw_; }
     constexpr bool operator<(Fixed o) const noexcept { return raw_ < o.raw_; }
     constexpr bool operator>(Fixed o) const noexcept { return raw_ > o.raw_; }
-    constexpr bool operator<=(Fixed o) const noexcept {
-        return raw_ <= o.raw_;
-    }
-    constexpr bool operator>=(Fixed o) const noexcept {
-        return raw_ >= o.raw_;
-    }
+    constexpr bool operator<=(Fixed o) const noexcept { return raw_ <= o.raw_; }
+    constexpr bool operator>=(Fixed o) const noexcept { return raw_ >= o.raw_; }
 
     constexpr Fixed& operator+=(Fixed o) noexcept {
         raw_ += o.raw_;
